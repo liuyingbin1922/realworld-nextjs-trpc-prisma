@@ -8,7 +8,7 @@ import { z } from 'zod'
 
 const RegisterSchema = z.object({
   username: z.string(),
-  email: z.string(),
+  // email: z.string(),
   password: z.string(),
 })
 
@@ -42,9 +42,9 @@ const Login: NextPage = () => {
       <div className="container page">
         <div className="row">
           <div className="col-md-6 offset-md-3 col-xs-12">
-            <h1 className="text-xs-center">Sign up</h1>
+            <h1 className="text-xs-center">用户注册</h1>
             <p className="text-xs-center">
-              <Link href="/login">Have an account?</Link>
+              <Link href="/login">已有账号，点击登录</Link>
             </p>
 
             <ul className="error-messages">
@@ -68,30 +68,30 @@ const Login: NextPage = () => {
                 <input
                   className="form-control form-control-lg"
                   type="text"
-                  placeholder="Username"
+                  placeholder="用户名"
                   name="username"
                   disabled={isLoading}
                 />
               </fieldset>
-              <fieldset className="form-group">
+              {/* <fieldset className="form-group">
                 <input
                   className="form-control form-control-lg"
                   type="text"
-                  placeholder="Email"
+                  placeholder="邮箱"
                   name="email"
                   disabled={isLoading}
                 />
-              </fieldset>
+              </fieldset> */}
               <fieldset className="form-group">
                 <input
                   className="form-control form-control-lg"
                   type="password"
-                  placeholder="Password"
+                  placeholder="密码"
                   name="password"
                   disabled={isLoading}
                 />
               </fieldset>
-              <button className="btn btn-lg btn-primary pull-xs-right">Sign up</button>
+              <button className="btn btn-lg btn-primary pull-xs-right">注册</button>
             </form>
           </div>
         </div>

@@ -49,15 +49,9 @@ export const Layout: FunctionComponent<Props> = ({
 
   return (
     <>
-      <Head>
-        <title>{title ?? 'Conduit'}</title>
-      </Head>
       {user ? (
         <nav className="navbar navbar-light">
           <div className="container">
-            <Link className="navbar-brand" href="/">
-              conduit
-            </Link>
             <ul className="nav navbar-nav pull-xs-right">
               <li className="nav-item">
                 <Link className={`nav-link${pathname === '/' ? ' active' : ''}`} href="/">
@@ -105,9 +99,6 @@ export const Layout: FunctionComponent<Props> = ({
       ) : (
         <nav className="navbar navbar-light">
           <div className="container">
-            <Link className="navbar-brand" href="/">
-              conduit
-            </Link>
             <ul className="nav navbar-nav pull-xs-right">
               {guestLinks.map(([path, text]) => (
                 <li key={path} className="nav-item">
@@ -126,17 +117,6 @@ export const Layout: FunctionComponent<Props> = ({
         </nav>
       )}
       {children}
-      <footer>
-        <div className="container">
-          <Link href="/" className="logo-font">
-            conduit
-          </Link>
-          <span className="attribution">
-            An interactive learning project from <a href="https://thinkster.io">Thinkster</a>. Code
-            &amp; design licensed under MIT.
-          </span>
-        </div>
-      </footer>
     </>
   )
 }

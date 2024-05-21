@@ -7,13 +7,13 @@ import { sign } from 'jsonwebtoken'
 import { z } from 'zod'
 
 export const userSchema = z.object({
-  email: z.string().email(),
+  // email: z.string().email(),
   username: z.string().min(1),
   token: z.string().min(1),
   bio: z.string().min(1).nullish(),
   image: z.string().url().nullish(),
 })
-const userSchemaWithPassword = userSchema.extend({ password: z.string().min(8) })
+const userSchemaWithPassword = userSchema.extend({ username: z.string().min(8), password: z.string().min(8) })
 
 export const authenticationRouter = createTRPCRouter({
   login: publicProcedure
@@ -29,7 +29,7 @@ export const authenticationRouter = createTRPCRouter({
     })
     .input(
       z.object({
-        user: userSchemaWithPassword.pick({ email: true, password: true }),
+        user: userSchemaWithPassword.pick({ username: true , password: true }),
       }),
     )
     .output(z.object({ user: userSchema }))
@@ -37,7 +37,7 @@ export const authenticationRouter = createTRPCRouter({
       const { input, ctx } = opts
 
       const user = await ctx.prisma.user.findUnique({
-        where: { email: input.user.email },
+        where: { username: input.user.username },
       })
 
       if (!user) {
@@ -76,7 +76,8 @@ export const authenticationRouter = createTRPCRouter({
     })
     .input(
       z.object({
-        user: userSchemaWithPassword.pick({ username: true, email: true, password: true }),
+        // 不使用邮箱;
+        user: userSchemaWithPassword.pick({ username: true, password: true }),
       }),
     )
     .output(z.object({ user: userSchema }))
@@ -84,7 +85,7 @@ export const authenticationRouter = createTRPCRouter({
       const { input, ctx } = opts
 
       const existingUser = await ctx.prisma.user.findFirst({
-        where: { OR: [{ email: input.user.email }, { username: input.user.username }] },
+        where: { username: input.user.username } ,
       })
 
       if (!!existingUser) {
@@ -94,11 +95,10 @@ export const authenticationRouter = createTRPCRouter({
         })
       }
 
-      const passwordHash = await hash(input.user.password, 10)
+      const passwordHash = await hash(input.user.password, 10);
       const user = await ctx.prisma.user.create({
         data: {
           username: input.user.username,
-          email: input.user.email,
           passwordHash,
           image: 'https://api.realworld.io/images/smiley-cyrus.jpeg',
         },
@@ -172,16 +172,12 @@ export const authenticationRouter = createTRPCRouter({
         })
       }
 
-      // Check if another user already has the proposed email or username
+      // Check if another user already has the proposed username
       const userWithSameNameOrEmail = await ctx.prisma.user.findFirst({
         where: {
-          OR: [
-            input.email && { email: input.email },
-            input.username && { username: input.username },
-          ].filter(truthy),
-          NOT: { id: ctx.user.id },
+            username: input.username && { username: input.username },
         },
-      })
+      });
 
       if (!!userWithSameNameOrEmail) {
         throw new TRPCError({
@@ -194,7 +190,7 @@ export const authenticationRouter = createTRPCRouter({
         where: { id: ctx.user.id },
         data: {
           username: input.username,
-          email: input.email,
+          // email: input.email,
           bio: input.bio,
           passwordHash: input.password && (await hash(input.password, 10)),
           image: input.image || null,

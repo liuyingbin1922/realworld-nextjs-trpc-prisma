@@ -20,9 +20,8 @@ const Home: NextPage = () => {
         <div className="banner">
           <div className="container">
             <h1 className="logo-font" data-testid="banner-title">
-              conduit
+              任务后台
             </h1>
-            <p>A place to share your knowledge.</p>
           </div>
         </div>
 
@@ -35,27 +34,6 @@ const Home: NextPage = () => {
               toggleClassName="feed-toggle"
             />
 
-            <div className="col-md-3">
-              <div className="sidebar">
-                <p>Popular Tags</p>
-
-                <div className="tag-list">
-                  {isLoadingTags ? (
-                    <Spinner size={24} />
-                  ) : (
-                    tags?.tags?.map(tag => (
-                      <QueryLink
-                        key={tag}
-                        className="tag-pill tag-default"
-                        query={{ feedType: tag === selectedTag ? '' : `#${tag}` }}
-                      >
-                        {tag}
-                      </QueryLink>
-                    ))
-                  )}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
