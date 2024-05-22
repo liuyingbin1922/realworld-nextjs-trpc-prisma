@@ -39,7 +39,7 @@ export const ActionArea: FunctionComponent = () => {
                     // Hard reset all user data on the page
                     ctx.auth.me.reset().catch(console.error)
 
-                    push('/').catch(console.error)
+                    push('/register').catch(console.error)
                     }}
                 >
                     退出.
@@ -48,7 +48,9 @@ export const ActionArea: FunctionComponent = () => {
          
         }
       </div>
-      <div className={styles.buttonArea}>
+      {
+            user && <>
+                <div className={styles.buttonArea}>
         <button   
             className="btn btn-outline-success"
             type={'button'}
@@ -70,6 +72,9 @@ export const ActionArea: FunctionComponent = () => {
             查看失败任务
         </button>
       </div>
+            </>
+      }
+  
       </>
     )
   }

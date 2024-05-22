@@ -58,22 +58,22 @@ export const Layout: FunctionComponent<Props> = ({
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   className={`nav-link${pathname === '/editor' ? ' active' : ''}`}
                   href="/editor"
                 >
                   <i className="ion-compose" /> New Article
                 </Link>
-              </li>
-              <li className="nav-item">
+              </li> */}
+              {/* <li className="nav-item">
                 <Link
                   className={`nav-link${pathname === '/settings' ? ' active' : ''}`}
                   href="/settings"
                 >
                   <i className="ion-gear-a" /> Settings
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           {/* <div className='userinfo'>
