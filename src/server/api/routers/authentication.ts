@@ -175,7 +175,7 @@ export const authenticationRouter = createTRPCRouter({
       // Check if another user already has the proposed username
       const userWithSameNameOrEmail = await ctx.prisma.user.findFirst({
         where: {
-            username: input.username && { username: input.username },
+            username: input.username,
         },
       });
 

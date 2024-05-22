@@ -102,7 +102,7 @@ const Login: NextPage = () => {
                       defaultValue={user.bio ?? ''}
                     />
                   </fieldset>
-                  <fieldset className="form-group">
+                  {/* <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
                       type="text"
@@ -111,7 +111,7 @@ const Login: NextPage = () => {
                       disabled={isLoading}
                       defaultValue={user.email}
                     />
-                  </fieldset>
+                  </fieldset> */}
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
