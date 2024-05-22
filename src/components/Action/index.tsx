@@ -55,21 +55,21 @@ export const ActionArea: FunctionComponent = () => {
             className="btn btn-outline-success"
             type={'button'}
         >
-            领取今日任务
+            开始今日任务
         </button>
         <br></br>
         <button   
             className="btn btn-outline-success"
             type={'button'}
         >
-            查看历史任务
+            查看任务
         </button>
         <br></br>
-        <button   
+        <button
             className="btn btn-outline-success"
             type={'button'}
         >
-            查看失败任务
+            教程学习
         </button>
       </div>
             </>
