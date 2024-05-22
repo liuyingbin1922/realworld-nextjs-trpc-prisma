@@ -18,7 +18,7 @@ interface LayoutProps {
 type Props = LayoutProps
 
 const guestLinks: Array<[string, string]> = [
-  ['/', 'Home'],
+  ['/', '首页'],
   ['/login', 'Sign in'],
   ['/register', 'Sign up'],
 ]
@@ -74,27 +74,27 @@ export const Layout: FunctionComponent<Props> = ({
                   <i className="ion-gear-a" /> Settings
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link
-                  className={`nav-link${
-                    pathname === `/profile/${encodeURIComponent(user.username)}` ? ' active' : ''
-                  }`}
-                  href={`/profile/${encodeURIComponent(user.username)}`}
-                >
-                  {user.image && (
-                    <Image
-                      src={user.image}
-                      alt="Profile picture"
-                      className="user-pic"
-                      width={26}
-                      height={26}
-                    />
-                  )}
-                  {user.username}
-                </Link>
-              </li>
             </ul>
           </div>
+          {/* <div className='userinfo'>
+          <Link
+            className={`nav-link${
+              pathname === `/profile/${encodeURIComponent(user.username)}` ? ' active' : ''
+            }`}
+            href={`/profile/${encodeURIComponent(user.username)}`}
+          >
+            {user.image && (
+              <Image
+                src={user.image}
+                alt="Profile picture"
+                className="user-pic"
+                width={26}
+                height={26}
+              />
+            )}
+            {user.username}
+          </Link>
+          </div> */}
         </nav>
       ) : (
         <nav className="navbar navbar-light">

@@ -5,6 +5,7 @@ import { Spinner } from '$/components/util/Spinner'
 import { api, useIsLoggedIn } from '$/lib/api'
 import { type NextPage } from 'next'
 import { useSearchParams } from 'next/navigation'
+import { ActionArea } from '$/components/Action'
 
 const Home: NextPage = () => {
   const isLoggedInVal = useIsLoggedIn()
@@ -27,12 +28,14 @@ const Home: NextPage = () => {
 
         <div className="container page">
           <div className="row">
-            <ArticleListTabs
+            {/* <ArticleListTabs
               className="col-md-9"
               tabs={[isLoggedInVal && 'feed', 'global']}
               defaultTab="global"
               toggleClassName="feed-toggle"
-            />
+            /> */}
+
+            <ActionArea></ActionArea>
 
           </div>
         </div>

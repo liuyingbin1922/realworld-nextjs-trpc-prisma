@@ -1,0 +1,30 @@
+.userinfo {
+    width: 100%;
+    height: 300px;
+}
+
+
+.userPic {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+}
+
+.username {
+    width: 100%;
+    text-align: center;
+    font-weight: 800;
+    font-size: 36px;
+}
+
+.action {
+    text-align: center;
+}
+
+.buttonArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
